@@ -10,12 +10,18 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+//Auth::routes();
 
 Route::get('/', function () {
     return redirect('/home');
 });
 Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'HomeController@admin');
 
-//Auth::routes();
 
-//Route::get('/home', 'HomeController@index');
+Route::group([
+    'prefix' => 'admin',
+], function () {
+    Route::resource('items', 'ItemsController');
+    Route::resource('categories', 'CategoriesController');
+});
