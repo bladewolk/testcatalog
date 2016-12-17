@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Categories;
-use App\CategoriesChild;
+use App\Category;
 use App\Http\Requests\CategoryCreate;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -17,7 +17,7 @@ class CategoriesController extends Controller
     public function index()
     {
         return view('admin.categories.index', [
-            'categories' => Categories::all()
+            'categories' => Category::all()
         ]);
     }
 
@@ -29,7 +29,7 @@ class CategoriesController extends Controller
     public function create()
     {
         return view('admin.categories.create', [
-            'categorieschild' => CategoriesChild::all()
+            'categorieschild' => Category::all()
         ]);
     }
 
@@ -39,9 +39,17 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryCreate $request, Categories $category)
+    public function store(CategoryCreate $request)
     {
-        $category->fill($request->all())->save();
+//        TODO need fix this KOSTIL!
+        $category = new Category($request->all());
+        $category->save();
+        foreach ($request->SubcategoryName as $value) {
+            $sub = new Subcategory();
+            $sub->name = $value;
+            $sub->category_id = $category->id;
+            $sub->save();
+        }
         return redirect()->route('categories.index');
     }
 
@@ -53,7 +61,9 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.categories.show', [
+            'categories' => Category::find($id)
+        ]);
     }
 
     /**
@@ -65,7 +75,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         return view('admin.categories.edit', [
-            'category' => Categories::findOrFail($id)
+            'category' => Category::findOrFail($id)
         ]);
     }
 
@@ -78,7 +88,7 @@ class CategoriesController extends Controller
      */
     public function update(CategoryCreate $request, $id)
     {
-        Categories::find($id)->update($request->all());
+        Category::find($id)->update($request->all());
         return redirect()->route('categories.index');
     }
 
@@ -90,7 +100,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Categories::findOrFail($id)->delete();
+        Category::findOrFail($id)->delete();
         return redirect()->route('categories.index');
     }
 }

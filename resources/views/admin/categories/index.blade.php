@@ -6,12 +6,13 @@
             <div class="list-group-item">
                 {{ Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete', 'style' => ''])  }}
                 {{ $category->name }}
+                {{ link_to_route('categories.show', $title = 'Show', $parameters = [$category->id], $attributes = ['class' => 'btn btn-primary']) }}
                 {{ Form::submit('Delete', ['class'=>'btn btn-danger', 'style' => '']) }}
                 {{ link_to_route('categories.edit', $title = 'Edit', $parameters = [$category->id], $attributes =
-                    [
-                        'style' => 'margin-right: 10px',
-                        'class' => 'btn btn-primary'
-                    ]) }}
+                [
+                'style' => 'margin-right: 10px',
+                'class' => 'btn btn-primary'
+                ]) }}
                 {{ Form::close() }}
             </div>
         @endforeach <br>

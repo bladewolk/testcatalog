@@ -4,15 +4,13 @@
     <div class="list-group">
         <li class="list-group-item">
             {{ Form::open(['route' => 'categories.store']) }}
-            <p class="text-center">Parent category</p>
+            Category
             {{ Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Enter category name']) }}
         </li>
         <li class="list-group-item">
-            Select childrens categories <br>
-            @foreach($categorieschild as $category)
-                {{ Form::checkbox('name', 'value') }}
-                {{ $category->name }} <br>
-            @endforeach
+            Subcategories <br>
+            <input type="text" name="SubcategoryName[]" value="" class="form-control"/> <br>
+            <input type="text" name="SubcategoryName[]" value="" class="form-control"/>
         </li>
 
     </div>
