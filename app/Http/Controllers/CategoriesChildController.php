@@ -88,6 +88,6 @@ class CategoriesChildController extends Controller
     public function destroy($id)
     {
         CategoriesChild::findOrFail($id)->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('categorieschild.index');
     }
 }

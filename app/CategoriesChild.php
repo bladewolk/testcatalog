@@ -11,4 +11,5 @@ class CategoriesChild extends Model
     protected $fillable = [
         'name'
     ];
+
 }
