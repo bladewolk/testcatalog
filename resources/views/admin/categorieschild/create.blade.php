@@ -1,17 +1,17 @@
 @extends('layouts.app')
 @section('content')
-    <p class="text-center">Edit {{ $category->name }}</p>
+    <p class="text-center">Create category</p>
     <div class="list-group">
         <li class="list-group-item">
-            {{ Form::model($category, ['method'=>'PUT', 'route' =>['categories.update', $category->id]]) }}
+            {{ Form::open(['route' => 'categorieschild.store']) }}
             <p class="text-center">Parent category</p>
-            {{ Form::text('name', $category->name , ['class' =>'form-control', 'autocomplete' => 'off']) }}
+            {{ Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Enter category name', 'autocomplete' => 'off']) }}
         </li>
         <li class="list-group-item">
             Select childrens categories
         </li>
     </div>
-    {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
+    {{ Form::submit('Create', ['class' => 'btn btn-primary']) }}
     {{ Form::close() }}
     @include('layouts.errors')
 @endsection

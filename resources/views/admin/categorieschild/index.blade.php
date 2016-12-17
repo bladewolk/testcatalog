@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-    <p class="col-sm-offset-6" style="margin-top: 50px">Categories</p>
+    <p class="text-center">Categories Child</p>
     <div class="list-group">
         @foreach($categories as $category)
             <div class="list-group-item">
-                {{ Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete', 'style' => ''])  }}
+                {{ Form::open(['route' => ['categorieschild.destroy', $category->id], 'method' => 'delete', 'style' => ''])  }}
                 {{ $category->name }}
                 {{ Form::submit('Delete', ['class'=>'btn btn-danger', 'style' => '']) }}
-                {{ link_to_route('categories.edit', $title = 'Edit', $parameters = [$category->id], $attributes =
+                {{ link_to_route('categorieschild.edit', $title = 'Edit', $parameters = [$category->id], $attributes =
                     [
                         'style' => 'margin-right: 10px',
                         'class' => 'btn btn-primary'
@@ -15,12 +15,6 @@
                 {{ Form::close() }}
             </div>
         @endforeach <br>
-        {{ link_to_route('categories.create', $title = 'Create', $parameters = [], $attributes = ['class' => 'btn btn-primary']) }}
+        {{ link_to_route('categorieschild.create', $title = 'Create', $parameters = [], $attributes = ['class' => 'btn btn-primary']) }}
     </div>
-
-
-
-
-
-
 @endsection

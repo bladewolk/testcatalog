@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Categories;
 use App\CategoriesChild;
-use App\Http\Requests\CategoryCreate;
+use App\Http\Requests\CategoriesChildCreate;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class CategoriesChildController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index', [
-            'categories' => Categories::all()
+        return view('admin.categorieschild.index', [
+            'categories' => CategoriesChild::all()
         ]);
     }
 
@@ -28,9 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create', [
-            'categorieschild' => CategoriesChild::all()
-        ]);
+        return view('admin.categorieschild.create');
     }
 
     /**
@@ -39,10 +36,10 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryCreate $request, Categories $category)
+    public function store(CategoriesChildCreate $request, CategoriesChild $category)
     {
         $category->fill($request->all())->save();
-        return redirect()->route('categories.index');
+        return redirect()->route('categorieschild.index');
     }
 
     /**
@@ -64,8 +61,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.categories.edit', [
-            'category' => Categories::findOrFail($id)
+        return view('admin.categorieschild.edit', [
+            'category' => CategoriesChild::findOrFail($id)
         ]);
     }
 
@@ -76,10 +73,10 @@ class CategoriesController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryCreate $request, $id)
+    public function update(Request $request, $id)
     {
-        Categories::find($id)->update($request->all());
-        return redirect()->route('categories.index');
+        CategoriesChild::find($id)->update($request->all());
+        return redirect()->route('categorieschild.index');
     }
 
     /**
@@ -90,7 +87,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Categories::findOrFail($id)->delete();
+        CategoriesChild::findOrFail($id)->delete();
         return redirect()->route('categories.index');
     }
 }

@@ -16,7 +16,7 @@ Route::get('/', function () {
     return redirect('/home');
 });
 Route::get('/home', 'HomeController@index');
-Route::get('/admin', 'HomeController@admin');
+Route::get('/admin', 'HomeController@admin')->name('admin');
 
 
 Route::group([
@@ -24,4 +24,5 @@ Route::group([
 ], function () {
     Route::resource('items', 'ItemsController');
     Route::resource('categories', 'CategoriesController');
+    Route::resource('categorieschild', 'CategoriesChildController');
 });
