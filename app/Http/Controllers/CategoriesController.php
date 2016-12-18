@@ -41,10 +41,11 @@ class CategoriesController extends Controller
      */
     public function store(CategoryCreate $request)
     {
+        dd($request);
 //        TODO need fix this KOSTIL!
         $category = new Category($request->all());
         $category->save();
-        foreach ($request->SubcategoryName as $value) {
+        foreach ($request->data as $value) {
             $sub = new Subcategory();
             $sub->name = $value;
             $sub->category_id = $category->id;

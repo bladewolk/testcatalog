@@ -9,12 +9,19 @@
         </li>
         <li class="list-group-item">
             Subcategories <br>
-            <input type="text" name="SubcategoryName[]" value="" class="form-control"/> <br>
-            <input type="text" name="SubcategoryName[]" value="" class="form-control"/>
+            <div class="input_fields_wrap">
+                <button class="add_field_button btn btn-default">Add More Fields</button>
+                <div>
+                    <br><input type="text" name="data[]" class="form-control">
+                </div>
+                <br>
+            </div>
         </li>
-
     </div>
     {{ Form::submit('Create', ['class' => 'btn btn-primary']) }}
     {{ Form::close() }}
     @include('layouts.errors')
+@endsection
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/inputs.js') }}"></script>
 @endsection
