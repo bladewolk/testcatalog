@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\CategoryCreate;
 use App\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class CategoriesController extends Controller
 {
@@ -45,12 +46,14 @@ class CategoriesController extends Controller
 //        TODO need fix this KOSTIL!
         $category = new Category($request->all());
         $category->save();
+
         foreach ($request->data as $value) {
             $sub = new Subcategory();
             $sub->name = $value;
             $sub->category_id = $category->id;
             $sub->save();
         }
+
         return redirect()->route('categories.index');
     }
 

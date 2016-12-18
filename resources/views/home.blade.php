@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
     <p class="col-sm-offset-6" style="margin-top: 50px">CATA</p>
 
-    <div class="content col-md-9 col-md-offset-3">
+
         <div class="col-md-2">
             CATEGORIES
             <div class="panel-group" id="collapse-group">
@@ -125,6 +124,5 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
