@@ -37,22 +37,18 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CategoryCreate|Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryCreate $request)
     {
-        dd($request);
-//        TODO need fix this KOSTIL!
-        $category = new Category($request->all());
-        $category->save();
-
-        foreach ($request->data as $value) {
-            $sub = new Subcategory();
-            $sub->name = $value;
-            $sub->category_id = $category->id;
-            $sub->save();
-        }
+        $category = Category::create($request->all());
+        $category->subcategories()
+            ->saveMany(
+                array_map(function ($subcategoryName) {
+                    return new Subcategory(['name' => $subcategoryName]);
+                }, Input::get('subcategory'))
+            );
 
         return redirect()->route('categories.index');
     }
@@ -66,7 +62,7 @@ class CategoriesController extends Controller
     public function show($id)
     {
         return view('admin.categories.show', [
-            'categories' => Category::find($id)
+            'category' => Category::find($id)
         ]);
     }
 
@@ -86,7 +82,7 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CategoryCreate|Request $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
