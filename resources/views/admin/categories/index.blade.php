@@ -30,13 +30,12 @@
 
             $.ajax({
                 type: 'POST',
-                url: '{{ route('ajaxdelete') }}',
+                url: '{{ route('ajaxDelete') }}',
                 data: {
                     id: id,
                     _token: CSRF_TOKEN
                 }
-            }).done(function (response) {
-                console.log(response);
+            }).done(function () {
                 parent.remove();
             });
 

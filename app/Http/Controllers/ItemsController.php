@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Http\Requests\ItemsCreate;
+use App\Items;
+use App\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ItemsController extends Controller
 {
@@ -13,7 +18,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        return view('admin.items.index');
+        return view('admin.items.index', [
+            'items' => Items::all()
+        ]);
     }
 
     /**
@@ -23,7 +30,9 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.items.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -32,9 +41,14 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemsCreate $request)
     {
-        //
+        $category_id = Subcategory::find($request->subcategory_id)->category()->get()->first()->name;
+        $item = new Items($request->all());
+        $item->category_id = $category_id;
+        $item->image = 'LOL';
+        $item->save();
+        return redirect()->route('items.index');
     }
 
     /**
