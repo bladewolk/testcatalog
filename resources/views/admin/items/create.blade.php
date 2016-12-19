@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h4 class="text-center">Create Item</h4>
-    <form id="category-form" action="{{ route('items.store') }}" method="POST">
+    <form id="category-form" action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <ul class="list-group">
             <li class="list-group-item">
@@ -11,6 +11,9 @@
             <li class="list-group-item">
                 <input type="text" name="price" class="form-control" placeholder="Enter item price"
                        autocomplete="off">
+            </li>
+            <li class="list-group-item">
+                <input type="file" name="image">
             </li>
         </ul>
         <h4 class="text-center">Select category and subcategory</h4>
