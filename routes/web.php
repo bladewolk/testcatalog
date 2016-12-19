@@ -17,6 +17,7 @@ Route::get('/', function () {
 });
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'HomeController@admin')->name('admin');
+Route::post('/categories/delete', 'ajaxController@deleteCategory')->name('ajaxdelete');
 
 
 Route::group([
@@ -26,3 +27,4 @@ Route::group([
     Route::resource('categories', 'CategoriesController');
     Route::resource('categorieschild', 'CategoriesChildController');
 });
+

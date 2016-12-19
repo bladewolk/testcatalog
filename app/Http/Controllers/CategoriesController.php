@@ -100,7 +100,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        Category::findOrFail($id)->delete();
-        return redirect()->route('categories.index');
+        dd($id);
+//        Category::findOrFail($id)->delete();
+//        return redirect()->route('categories.index');
     }
 }
