@@ -6,8 +6,7 @@
             <div class="list-group-item">
                 {{ $category->name }}
                 {{ link_to_route('categories.show', $title = 'Show', $parameters = [$category->id], $attributes = ['class' => 'btn btn-primary']) }}
-                <button class="btn btn-danger DelCat" data-id="{{ $category->id }}"
-                        data-token="{{ csrf_token() }}">
+                <button class="btn btn-danger DelCat" data-id="{{ $category->id }}">
                     Delete
                 </button>
                 {{ link_to_route('categories.edit', $title = 'Edit', $parameters = [$category->id], $attributes =
@@ -25,7 +24,6 @@
         $(".DelCat").click(function () {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             parent = $(this).parent(".list-group-item");
-            token = $(this).data("token");
             id = $(this).data("id");
 
             $.ajax({

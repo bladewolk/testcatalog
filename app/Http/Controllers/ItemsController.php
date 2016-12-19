@@ -43,7 +43,7 @@ class ItemsController extends Controller
      */
     public function store(ItemsCreate $request)
     {
-        $category_id = Subcategory::find($request->subcategory_id)->category()->get()->first()->name;
+        $category_id = Subcategory::find($request->subcategory_id)->category()->get()->first()->id;
         $item = new Items($request->all());
         $item->category_id = $category_id;
         $item->image = 'LOL';

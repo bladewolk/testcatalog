@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'HomeController@admin')->name('admin');
 Route::post('/categories/delete', 'ajaxController@deleteCategory')->name('ajaxDelete');
+Route::post('/items/delete', 'ajaxController@deleteItem')->name('ajaxDeleteItem');
 Route::post('/categories/load', 'ajaxController@loadSubcategory')->name('subcategoryLoad');
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Items;
 use App\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -19,5 +20,10 @@ class ajaxController extends Controller
         return view('admin.items.loadSubcategory', [
             'subcategories' => Category::find($request->id)->subcategories()->get()
         ]);
+    }
+
+    public function deleteItem(Request $request)
+    {
+        Items::find($request->id)->delete();
     }
 }
