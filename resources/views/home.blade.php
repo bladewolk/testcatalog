@@ -6,123 +6,98 @@
 
     <div class="col-md-6">
         CATEGORIES
-        <div class="panel-group" id="collapse-group">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#collapse-group" href="#el1">СPU</a>
-                    </h4>
+        <div class="panel-group" id="accordion">
+            @foreach($categories as $key => $value)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $key }}">
+                                {{ $value->name }}</a>
+                        </h4>
+                    </div>
+                    <div id="collapse{{ $key }}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                                @foreach($value->subcategories as $k => $subcategory)
+                                    <li class="">
+                                        <input type="checkbox" name="{{ $subcategory->id }}">
+                                        {{ $subcategory->name }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div id="el1" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item">Intel<input type="checkbox" class="pull-right"></li>
-                        <li class="list-group-item">AMD<input type="checkbox" class="pull-right"></li>
-                    </ul>
+            @endforeach
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="">
+                BLOCK3
+            </div>
+            <div>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
+                </div>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
+                </div>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
+                </div>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
                 </div>
             </div>
-
-        </div>
-
-        <div class="panel-group" id="collapse-group2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#collapse-group2" href="#el2">Videocards</a>
-                    </h4>
+            <div>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
                 </div>
-                <div id="el2" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item">Nvidia<input type="checkbox" class="pull-right"></li>
-                        <li class="list-group-item">AMD<input type="checkbox" class="pull-right"></li>
-                    </ul>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
                 </div>
-            </div>
-        </div>
-
-        <div class="panel-group" id="collapse-group2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#collapse-group3" href="#el3">Memory</a>
-                    </h4>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
                 </div>
-                <div id="el3" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item">1300Mhz<input type="checkbox" class="pull-right"></li>
-                        <li class="list-group-item">1600Mhz<input type="checkbox" class="pull-right"></li>
-                    </ul>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="">
-            BLOCK3
-        </div>
-        <div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-        </div>
-        <div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
-            </div>
-        </div>
-        <div>
-            <div class="col-sm-3 mgtp">
-                <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                     height="80%">
-                Place PRICE <br>
-                <button>BY IT!</button>
+            <div>
+                <div class="col-sm-3 mgtp">
+                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
+                         height="80%">
+                    Place PRICE <br>
+                    <button>BY IT!</button>
 
 
+                </div>
             </div>
         </div>
-    </div>
 @endsection
 

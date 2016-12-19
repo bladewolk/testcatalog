@@ -19,8 +19,8 @@
         <h4 class="text-center">Select category and subcategory</h4>
         <ul class="list-group">
             @foreach($categories as $category)
-                <li class="list-group-item">
-                    <span class="category" data-category="{{ $category->id }}">{{ $category->name }}</span>
+                <li class="list-group-item category" data-category="{{ $category->id }}">
+                    {{ $category->name }}
                 </li>
             @endforeach
         </ul>
@@ -33,9 +33,9 @@
 @endsection
 @section('scripts')
     <script>
-        $(".category").hover().css('cursor', 'pointer');
+        $('.category').hover().css('cursor', 'pointer');
 
-        $(".category").click(function () {
+        $('.category').click(function () {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             id = $(this).data("category");
 
