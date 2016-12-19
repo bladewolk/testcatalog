@@ -32,19 +32,19 @@
             form.find('.add-field').click(function (e) {
                 e.preventDefault();
 
-                var newSubcategory = subcategoryInputs.first().clone();
+                var newSubcategory = subcategoryInputs.last().clone();
                 newSubcategory.find('input').val('');
                 customFields.append(newSubcategory);
 
-                elementsCount += 1;
+                elementsCount++;
             });
 
             form.find('.remove-field').click(function (e) {
                 e.preventDefault();
 
                 if (elementsCount > 1) {
-                    subcategoryInputs.last().remove();
-                    elementsCount -= 1;
+                    $(".subcategory").last().remove();
+                    elementsCount--;
                 }
             });
         });
