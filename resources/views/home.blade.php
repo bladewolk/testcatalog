@@ -5,7 +5,7 @@
     <p class="hidden" id="currentCategory" data-name="">NOW</p>
 
 
-    <div class="col-md-12 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-2">
         <div class="panel-group col-md-2" id="accordion">
             @foreach($categories as $key => $value)
                 <div class="panel panel-default">
@@ -54,9 +54,14 @@
                         {{ $item->price }}$
                     </div>
                 @endforeach
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            {{ $items->links() }}
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
 
     </div>
@@ -78,7 +83,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('ajaxLoadCategory') }}',
+                    url: '{{ action('HomeController@loadCategory') }}',
                     data: {
                         id: id,
                         _token: CSRF_TOKEN

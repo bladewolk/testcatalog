@@ -16,7 +16,7 @@ Route::get('/', function () {
     return redirect('/home');
 });
 Route::get('/home', 'HomeController@index');
-Route::post('/loadCategory', 'HomeController@loadCategory')->name('ajaxLoadCategory');
+Route::post('/loadCategory', 'HomeController@loadCategory');
 Route::post('/loadSubcategory', 'HomeController@loadSubcategory')->name('ajaxLoadSubcategories');
 Route::post('/ajaxFilter', 'HomeController@ajaxFilter')->name('ajaxFilter');
 Route::get('/admin', 'HomeController@admin')->name('admin');

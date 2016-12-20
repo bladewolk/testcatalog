@@ -81,7 +81,6 @@
             </div>
         </div>
     </nav>
-    <div class="col-md-12">
         {{ link_to_route('admin', $title = 'Admin panel', $parameters = [], $attributes = ['class' => 'btn btn-success']) }}
         @yield('content')
     </div>

@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'categories' => Category::with('subcategories')->get(),
-            'items' => Items::orderBy('name', 'desc')->get()
+            'items' => Items::orderBy('name', 'desc')->paginate(4)
         ]);
     }
 
@@ -40,7 +40,7 @@ class HomeController extends Controller
     public function loadCategory(Request $request)
     {
         return view('layouts.itemsload', [
-            'items' => Items::all()->where('category_id', $request->id)
+            'items' => Items::where('category_id', $request->id)->paginate(4)
         ]);
     }
 
