@@ -17,6 +17,11 @@
         <li class="list-group-item">
             Subcategory: {{ $item->subcategory->name }}
         </li>
+        <li class="list-group-item">
+            Update picture:
+            <input type="file" name="image"> <br>
+            <button class="btn btn-danger">Delete Picture</button>
+        </li>
         @include('layouts.errors')
     </div>
     {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
