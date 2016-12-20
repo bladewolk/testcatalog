@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'categories' => Category::with('subcategories')->get(),
-            'items' => Items::orderBy('name', 'desc')->paginate(4)
+            'items' => Items::orderBy('name', 'desc')->get()
         ]);
     }
 
@@ -40,17 +40,12 @@ class HomeController extends Controller
     public function loadCategory(Request $request)
     {
         return view('layouts.itemsload', [
-            'items' => Items::where('category_id', $request->id)->paginate(4)
+            'items' => Items::where('category_id', $request->id)->get()
         ]);
     }
 
     public function loadSubcategory(Request $request)
     {
-//        return view('layouts.itemsload', [
-//            'items' => Items::all()->where('category_id', $request->id)
-//        ]);
-//        $request->id; $request->category;
-//        return $request->category;
         if (sizeof($request->id)) {
             $items = Items::all()->whereIn('subcategory_id', $request->id);
         } else $items = Items::all()->where('category_id', $request->category);
