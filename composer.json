@@ -9,11 +9,13 @@
   "type": "project",
   "require": {
     "php": ">=5.6.4",
+    "ext-sqlite3": "*",
+    "ext-pdo_sqlite": "*",
     "laravel/framework": "5.3.*",
     "twbs/bootstrap": "^3.3",
     "laravelcollective/html": "^5.3.0",
     "intervention/image": "^2.3"
-    },
+  },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
@@ -44,7 +46,8 @@
     "post-install-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postInstall",
       "php artisan optimize",
-      "touch database/database.sqlite"
+      "touch database/database.sqlite",
+      "php artisan migrate"
     ],
     "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postUpdate",
