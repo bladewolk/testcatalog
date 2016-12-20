@@ -80,7 +80,11 @@ class ItemsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.items.edit', [
+            'item' => Items::with('category')
+                ->with('subcategory')
+                ->find($id)
+        ]);
     }
 
     /**

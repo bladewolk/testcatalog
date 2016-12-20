@@ -1,34 +1,36 @@
 @extends('layouts.app')
 @section('content')
-    <h4 class="text-center">Create Item</h4>
-    <form id="category-form" action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        <ul class="list-group">
-            <li class="list-group-item">
-                <input type="text" name="name" class="form-control" placeholder="Enter item name"
-                       autocomplete="off">
-            </li>
-            <li class="list-group-item">
-                <input type="text" name="price" class="form-control" placeholder="Enter item price"
-                       autocomplete="off">
-            </li>
-            <li class="list-group-item">
-                <input type="file" name="image">
-            </li>
-        </ul>
-        <h4 class="text-center">Select category and subcategory</h4>
-        <ul class="list-group">
-            @foreach($categories as $category)
-                <li class="list-group-item category" data-category="{{ $category->id }}">
-                    {{ $category->name }}
+    <div class="col-md-4 col-md-offset-4">
+        <h4 class="text-center">Create Item</h4>
+        <form id="category-form" action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <input type="text" name="name" class="form-control" placeholder="Enter item name"
+                           autocomplete="off">
                 </li>
-            @endforeach
-        </ul>
-        <ul class="list-group" id="subcategories">
+                <li class="list-group-item">
+                    <input type="text" name="price" class="form-control" placeholder="Enter item price"
+                           autocomplete="off">
+                </li>
+                <li class="list-group-item">
+                    <input type="file" name="image">
+                </li>
+            </ul>
+            <h4 class="text-center">Select category and subcategory</h4>
+            <ul class="list-group">
+                @foreach($categories as $category)
+                    <li class="list-group-item category" data-category="{{ $category->id }}">
+                        {{ $category->name }}
+                    </li>
+                @endforeach
+            </ul>
+            <ul class="list-group" id="subcategories">
 
-        </ul>
-        <input type="submit" value="Create" class="btn btn-success">
-    </form>
+            </ul>
+            <input type="submit" value="Create" class="btn btn-success">
+        </form>
+    </div>
     @include('layouts.errors')
 @endsection
 @section('scripts')
