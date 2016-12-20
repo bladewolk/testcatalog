@@ -42,8 +42,9 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemsCreate $request)
     {
+        dd(Input::all());
         $image = Input::file('image');
         $filename = time() . '.' . $image->getClientOriginalExtension();
         $path = public_path('/images/' . $filename);

@@ -18,7 +18,7 @@ class ajaxController extends Controller
     public function loadSubcategory(Request $request)
     {
         return view('admin.items.loadSubcategory', [
-            'subcategories' => Category::find($request->id)->subcategories()->get()
+            'subcategories' => Subcategory::where('category_id', $request->id)->get()
         ]);
     }
 

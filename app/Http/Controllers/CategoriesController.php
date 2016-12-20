@@ -42,6 +42,7 @@ class CategoriesController extends Controller
      */
     public function store(CategoryCreate $request)
     {
+        dd(Input::all());
         $category = Category::create($request->all());
         $category->subcategories()
             ->saveMany(
@@ -100,8 +101,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
-//        Category::findOrFail($id)->delete();
-//        return redirect()->route('categories.index');
+        //
     }
 }

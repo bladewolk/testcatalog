@@ -30,8 +30,8 @@
             </ul>
             <input type="submit" value="Create" class="btn btn-success">
         </form>
+        @include('layouts.errors')
     </div>
-    @include('layouts.errors')
 @endsection
 @section('scripts')
     <script>
