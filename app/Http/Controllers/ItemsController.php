@@ -8,6 +8,7 @@ use App\Items;
 use App\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rules\In;
 use Intervention\Image\Facades\Image;
 
 class ItemsController extends Controller
@@ -97,7 +98,8 @@ class ItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Items::find($id)->update($request->all());
+        return redirect()->route('items.index');
     }
 
     /**

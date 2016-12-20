@@ -8,6 +8,10 @@
             {{ Form::text('name', $item->name , ['class' =>'form-control', 'autocomplete' => 'off']) }}
         </li>
         <li class="list-group-item">
+            <p class="text-center">Price</p>
+            <input type="text" name="price" class="form-control" value="{{ $item->price }}">
+        </li>
+        <li class="list-group-item">
             Category: {{ $item->category->name }}
         </li>
         <li class="list-group-item">
