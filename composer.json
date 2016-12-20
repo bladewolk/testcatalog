@@ -11,6 +11,7 @@
     "php": ">=5.6.4",
     "ext-sqlite3": "*",
     "ext-pdo_sqlite": "*",
+    "ext-gd": "*",
     "laravel/framework": "5.3.*",
     "twbs/bootstrap": "^3.3",
     "laravelcollective/html": "^5.3.0",
