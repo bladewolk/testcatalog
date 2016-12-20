@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Category::deleting(function ($category) {
             $category->subcategories()->delete();
+            $category->items()->delete();
         });
     }
 
