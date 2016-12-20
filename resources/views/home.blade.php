@@ -4,9 +4,8 @@
     <p class="text-center">Catalog</p>
 
 
-    <div class="col-md-6">
-        CATEGORIES
-        <div class="panel-group" id="accordion">
+    <div class="col-md-12 col-md-offset-2">
+        <div class="panel-group col-md-2" id="accordion">
             @foreach($categories as $key => $value)
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -17,9 +16,9 @@
                     </div>
                     <div id="collapse{{ $key }}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <ul>
+                            <ul style="list-style-type:none">
                                 @foreach($value->subcategories as $k => $subcategory)
-                                    <li class="">
+                                    <li>
                                         <input type="checkbox" name="{{ $subcategory->id }}">
                                         {{ $subcategory->name }}
                                     </li>
@@ -32,72 +31,27 @@
 
         </div>
 
-        <div class="col-md-6">
-            <div class="">
-                BLOCK3
+        <div class="col-md-6 text-center">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    BLOCK3
+                </li>
+            </ul>
+
+            <div id="loadContent">
+                @foreach($items as $item)
+                    <div class="col-md-3 text-center">
+                        {{ $item->name }}
+                        <img src="{{ asset($item->image) }}" width="80%"
+                             height="80%">
+                        {{ $item->price }}$
+                    </div>
+                @endforeach
             </div>
-            <div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-            </div>
-            <div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
-                </div>
-            </div>
-            <div>
-                <div class="col-sm-3 mgtp">
-                    <img src="https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png" width="80%"
-                         height="80%">
-                    Place PRICE <br>
-                    <button>BY IT!</button>
 
 
-                </div>
-            </div>
         </div>
+
+    </div>
 @endsection
 

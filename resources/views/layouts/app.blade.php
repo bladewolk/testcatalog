@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
+                'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
@@ -81,7 +81,7 @@
             </div>
         </div>
     </nav>
-    <div class="content col-md-4 col-md-offset-4">
+    <div class="col-md-12">
         {{ link_to_route('admin', $title = 'Admin panel', $parameters = [], $attributes = ['class' => 'btn btn-success']) }}
         @yield('content')
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Items;
 use Hamcrest\SampleSelfDescriber;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'categories' => Category::with('subcategories')->get(),
+            'items' => Items::all()
         ]);
     }
 
