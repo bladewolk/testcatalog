@@ -65,7 +65,11 @@ class ItemsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.items.show', [
+            'item' => Items::with('category')
+                ->with('subcategory')
+                ->find($id)
+        ]);
     }
 
     /**

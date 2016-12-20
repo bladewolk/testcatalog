@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <p class="col-sm-offset-6" style="margin-top: 50px">Categories</p>
-    <div class="list-group">
-        @foreach($categories as $category)
+    <div class="list-group col-md-4 col-md-offset-4">
+        Categories
+    @foreach($categories as $category)
             <div class="list-group-item">
                 {{ $category->name }}
                 {{ link_to_route('categories.show', $title = 'Show', $parameters = [$category->id], $attributes = ['class' => 'btn btn-primary']) }}

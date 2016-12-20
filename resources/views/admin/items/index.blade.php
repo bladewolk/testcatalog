@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-    <p class="col-sm-offset-6" style="margin-top: 50px">Items</p>
-    <a href="{{ route('items.create') }}" class="btn btn-primary">Create</a>
-    <div class="list-group">
+    <div class="list-group col-md-4 col-md-offset-4">
+        <a href="{{ route('items.create') }}" class="btn btn-primary">Create</a>
+        <h4 class="text-center">Items</h4>
         <ul class="list-group">
             @foreach($items as $item)
                 <li class="list-group-item">

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <p class="col-sm-offset-6" style="margin-top: 50px">Categories</p>
-    <div class="list-group">
+    <div class="list-group col-md-4 col-md-offset-4">
         Category
         <div class="list-group-item">
             {{ $category->name }}
@@ -13,10 +12,4 @@
             </div>
         @endforeach
     </div>
-
-
-
-
-
-
 @endsection
