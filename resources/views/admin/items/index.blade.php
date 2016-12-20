@@ -2,9 +2,10 @@
 @section('content')
 
     <p class="col-sm-offset-6" style="margin-top: 50px">Items</p>
+    <a href="{{ route('items.create') }}" class="btn btn-primary">Create</a>
     <div class="list-group">
         <ul class="list-group">
-            @foreach($items as $item)
+        @foreach($items as $item)
                 <li class="list-group-item">
                     {{  $item->name }}
                     <span class="text-right">{{ $item->price }}</span>
@@ -17,7 +18,6 @@
         </ul>
     </div>
 
-    <a href="{{ route('items.create') }}" class="btn btn-primary">Create</a>
 @endsection
 @section('scripts')
     <script>
