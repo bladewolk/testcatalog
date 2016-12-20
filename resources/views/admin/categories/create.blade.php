@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="col-md-4 col-md-offset-4">
-        <h1 class="text-center">Create category</h1>
+        <h4 class="text-center">Create category</h4>
         <form id="category-form" action="{{ route('categories.store') }}" method="POST">
             {{ csrf_field() }}
             <ul class="list-groups ">
@@ -10,10 +10,11 @@
                            autocomplete="off">
                 </li>
             </ul>
-            <h2 class="text-center">Subcategories</h2>
+            <h4 class="text-center">Subcategories</h4>
             <ul class="list-groups custom-fields">
                 <li class="list-group-item subcategory">
-                    <input type="text" name="subcategory[]" class="form-control" autocomplete="off">
+                    <input type="text" name="subcategory[]" class="form-control" autocomplete="off"
+                           placeholder="Enter subcategory">
                 </li>
             </ul>
             <button class="btn btn-default add-field">Add field</button>

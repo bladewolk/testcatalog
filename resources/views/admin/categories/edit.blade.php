@@ -7,8 +7,8 @@
             <p class="text-center">Parent category</p>
             {{ Form::text('name', $category->name , ['class' =>'form-control', 'autocomplete' => 'off']) }}
         </li>
+        @include('layouts.errors')
     </div>
     {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
     {{ Form::close() }}
-    @include('layouts.errors')
 @endsection
