@@ -2,18 +2,18 @@
 @section('content')
     <div class="list-group col-md-4 col-md-offset-4">
         Categories
-    @foreach($categories as $category)
+        @foreach($categories as $category)
             <div class="list-group-item">
-                {{ $category->name }}
-                {{ link_to_route('categories.show', $title = 'Show', $parameters = [$category->id], $attributes = ['class' => 'btn btn-primary']) }}
-                <button class="btn btn-danger DelCat" data-id="{{ $category->id }}">
-                    Delete
-                </button>
-                {{ link_to_route('categories.edit', $title = 'Edit', $parameters = [$category->id], $attributes =
-                [
-                'style' => 'margin-right: 10px',
-                'class' => 'btn btn-primary'
-                ]) }}
+                <div class="text-left">
+                    {{ $category->name }}
+                </div>
+                <div class="text-right">
+                    {{ link_to_route('categories.show', $title = 'Show', $parameters = [$category->id], $attributes = ['class' => 'btn btn-primary']) }}
+                    <button class="btn btn-danger DelCat" data-id="{{ $category->id }}">
+                        Delete
+                    </button>
+                    {{ link_to_route('categories.edit', $title = 'Edit', $parameters = [$category->id], $attributes = ['class' => 'btn btn-primary']) }}
+                </div>
             </div>
         @endforeach <br>
         {{ link_to_route('categories.create', $title = 'Create', $parameters = [], $attributes = ['class' => 'btn btn-primary']) }}

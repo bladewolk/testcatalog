@@ -21,8 +21,9 @@
             <button class="btn btn-default remove-field">Remove field</button>
             <input type="submit" value="Create" class="btn btn-primary">
         </form>
+        <br>
+        @include('layouts.errors')
     </div>
-    @include('layouts.errors')
 @endsection
 @section('scripts')
     <script>
