@@ -50,8 +50,7 @@
                                     <div class="col-md-3 text-center">
                                         {{ $items[$j]->name }} <br>
                                         {{--                        <img src="{{ asset('storage/'.$item->image)}}" width="80%"--}}
-                                        <img src="{{ $items[$j]->image }}" width="80%"
-                                             height="80%"><br>
+                                        <img src="{{ $items[$j]->image }}" width="80%"><br>
                                         {{ $items[$j]->price }}$
                                     </div>
                                 @endif
