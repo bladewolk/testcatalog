@@ -33,7 +33,7 @@
         <div class="col-md-6 text-center">
             <div class="list-group-item">
                 Filter:
-                <input type="radio" name="filter" value="none" checked="checked" data-filter="" data-column="">None
+                <input type="radio" name="filter" value="none" checked="checked" data-filter="null" data-column="null">None
                 <input type="radio" name="filter" value="Alphabetical" data-filter="asc" data-column="name">A-Z
                 <input type="radio" name="filter" value="Alphabetical" data-filter="desc" data-column="price">Price Up
                 to Down
@@ -93,18 +93,15 @@
             });
 //Load subcategories
             $(":checkbox").click(function () {
-                filter = $(this).data("filter");
-                column = $(this).data("column");
+                filter = $("input[name='filter']:checked").data("filter");
+                column = $("input[name='filter']:checked").data("column");
                 var array = [];
                 id = $(this).data("id");
                 category = $(this).data("category");
 
-
                 $("input:checkbox:checked").each(function () {
                     array.push($(this).data("id"));
                 });
-
-                console.log(array);
 
                 $.ajax({
                     type: 'POST',
