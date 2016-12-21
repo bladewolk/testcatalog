@@ -26,4 +26,19 @@ class ajaxController extends Controller
     {
         Items::find($request->id)->delete();
     }
+
+    public function ajaxImageDelete(Request $request)
+    {
+        $item = Items::find($request->id);
+        if ($item->image == '0383a250e987fe737edbf2518f208bc7.jpeg') {
+            return null;
+        } else {
+            $item->image = '0383a250e987fe737edbf2518f208bc7.jpeg';
+            $item->update();
+            return view('admin.items.imageDelete', [
+                'item' => $item
+            ]);
+        }
+
+    }
 }

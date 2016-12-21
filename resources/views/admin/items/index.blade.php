@@ -6,12 +6,13 @@
         <h4 class="text-center">Items</h4>
         <ul class="list-group">
             @foreach($items as $item)
-                <li class="list-group-item">
+                <li class="list-group-item" data-id="{{ $item->id }}">
                     {{  $item->name }} <br>
                     {{ $item->price }}
                     {{ link_to_route('items.show', $title = 'Show', $parameters = [$item->id], $attributes = ['class' => 'btn btn-primary']) }}
-                    <button class="btn btn-danger DelItem" data-id="{{ $item->id }}">Delete</button>
+                    <button class=" btn btn-danger DelItem" data-id="{{ $item->id }}">Delete</button>
                     {{ link_to_route('items.edit', $title = 'Edit', $parameters = [$item->id], $attributes = ['class' => 'btn btn-primary']) }}
+                    <button class="btn btn-danger DelImg">Del img</button>
                     <img src="{{ asset('storage/'.$item->image)}}" widht="60" height="60">
                 </li>
             @endforeach
@@ -21,10 +22,11 @@
 @endsection
 @section('scripts')
     <script>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
         $(".DelItem").click(function () {
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            parent = $(this).parent(".list-group-item");
-            id = $(this).data("id");
+            parent = $(this).parent();
+            id = parent.data("id");
 
             $.ajax({
                 type: 'POST',
@@ -35,6 +37,22 @@
                 }
             }).done(function () {
                 parent.remove();
+            });
+        });
+
+        $(".DelImg").click(function () {
+            parent = $(this).parent();
+            id = parent.data("id");
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('ajaxImageDelete') }}',
+                data: {
+                    id: id,
+                    _token: CSRF_TOKEN
+                }
+            }).done(function (response) {
+                if (response)
+                    parent.html(response);
             });
         });
     </script>
