@@ -48,7 +48,7 @@
             <div id="loadContent">
                 @for ($i = 0; $i < count($items); $i+=4)
                     @if(isset($items[$i]))
-                        <div>
+                        <div style="float:left">
                             @for ($j = $i; $j < $i+4; $j++)
                                 @if (isset($items[$j]))
                                     <div class="col-md-3 text-center">
