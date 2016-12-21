@@ -47,16 +47,15 @@ class ItemsController extends Controller
     public function store(ItemsCreate $request)
     {
         if (Input::file()) {
-            $image = Input::file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $path = public_path('/images/' . $filename);
-            Image::make($image->getRealPath())->resize(200, 200)->save($path);
-        } else $filename = 'noimage.jpg';
+            $filename = $request->file('image')->store('public');
+            $path = substr($filename, 7);
+
+        } else $path = 'noimage.jpg';
 
         $category_id = Subcategory::find($request->subcategory_id)->category()->get()->first()->id;
         $item = new Items($request->all());
         $item->category_id = $category_id;
-        $item->image = '/images/' . $filename;
+        $item->image = $path;
         $item->save();
         return redirect()->route('items.index');
     }
@@ -101,13 +100,13 @@ class ItemsController extends Controller
     public function update(Request $request, $id)
     {
         $item = Items::find($id);
-        dd(Input::all());
         if (Input::file()) {
             $image = Input::file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = public_path('/images/' . $filename);
             Image::make($image->getRealPath())->resize(200, 200)->save($path);
-        } else $filename = 'noimage.jpg';
+            $request->image = '/images/' . $filename;
+        }
 
         Items::find($id)->update($request->all());
         return redirect()->route('items.index');

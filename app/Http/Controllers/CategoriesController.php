@@ -40,9 +40,8 @@ class CategoriesController extends Controller
      * @param CategoryCreate|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryCreate $request)
+    public function store(Request $request)
     {
-        dd(Input::all());
         $category = Category::create($request->all());
         $category->subcategories()
             ->saveMany(
