@@ -39,8 +39,15 @@ class HomeController extends Controller
 
     public function loadCategory(Request $request)
     {
+        if ($request->filter == null) {
+            $items = Items::where('category_id', $request->id)->get();
+        } else {
+            $items = Items::where('category_id', $request->id)
+                ->orderBy($request->column, $request->filter)
+                ->get();
+        }
         return view('layouts.itemsload', [
-            'items' => Items::where('category_id', $request->id)->get()
+            'items' => $items
         ]);
     }
 

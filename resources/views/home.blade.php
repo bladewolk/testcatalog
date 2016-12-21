@@ -70,20 +70,23 @@
         var category = 0;
 
         $(function () {
-
             $('.loadItems').click(function () {
-
                 $('#accordion :checkbox:enabled').prop('checked', false);
                 id = $(this).data("category");
                 title = $(this).data("name");
                 $(document).prop('title', title);
                 $('#currentCategory').data("name", id);
 
+                filter = $("input[name='filter']:checked").data("filter");
+                column = $("input[name='filter']:checked").data("column");
+
                 $.ajax({
                     type: 'POST',
                     url: '{{ action('HomeController@loadCategory') }}',
                     data: {
                         id: id,
+                        filter: filter,
+                        column: column,
                         _token: CSRF_TOKEN
                     }
                 }).done(function (response) {
