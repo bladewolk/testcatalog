@@ -1,7 +1,7 @@
 @foreach($items as $item)
     <div class="col-md-3 text-center">
         {{ $item->name }} <br>
-        <img src="{{ asset('storage/'.$item->image)}}" width="80%"
+        <img src="{{ $item->image }}" width="80%"
              height="80%">
         {{ $item->price }}$
     </div>
