@@ -14,6 +14,9 @@
             <li class="list-group-item">
                 {{ $item->subcategory->name }}
             </li>
+            <li class="list-group-item">
+                <img src="{{ $item->image }}" width="100%">
+            </li>
         </ul>
 
     </div>
