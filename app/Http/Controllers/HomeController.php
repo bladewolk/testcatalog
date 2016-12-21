@@ -55,7 +55,7 @@ class HomeController extends Controller
     {
         if (sizeof($request->subcategory)) {
             if ($request->filter == null) {
-                $items = Items::where('subcategory_id', $request->subcategory)->get();
+                $items = Items::whereIn('subcategory_id', $request->subcategory)->get();
             } else {
                 $items = Items::whereIn('subcategory_id', $request->subcategory)
                     ->orderBy($request->column, $request->filter)
