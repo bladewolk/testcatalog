@@ -7,7 +7,7 @@
                         {{ $items[$j]->name }} <br>
                         {{--                        <img src="{{ asset('storage/'.$item->image)}}" width="80%"--}}
                         <img src="{{ $items[$j]->image }}" width="80%"
-                             height="80%">
+                             height="80%"><br>
                         {{ $items[$j]->price }}$
                     </div>
                 @endif

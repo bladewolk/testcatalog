@@ -50,9 +50,11 @@ class HomeController extends Controller
             $items = Items::whereIn('subcategory_id', $request->subcategory)
                 ->orderBy($request->column, $request->filter)
                 ->get();
-        } else $items = Items::where('category_id', $request->category)
-            ->orderBy($request->column, $request->filter)
-            ->get();
+        } else {
+            $items = Items::where('category_id', $request->category)
+                ->orderBy($request->column, $request->filter)
+                ->get();
+        }
 
         return view('layouts.itemsload', [
             'items' => $items

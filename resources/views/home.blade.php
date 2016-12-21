@@ -21,7 +21,7 @@
                             @foreach($value->subcategories as $k => $subcategory)
                                 <input type="checkbox" name="{{ $subcategory->id }}"
                                        data-id="{{ $subcategory->id }}" data-category="{{ $value->id }}">
-                                {{ $subcategory->name }}
+                                {{ $subcategory->name }}<br>
                             @endforeach
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                         {{ $items[$j]->name }} <br>
                                         {{--                        <img src="{{ asset('storage/'.$item->image)}}" width="80%"--}}
                                         <img src="{{ $items[$j]->image }}" width="80%"
-                                             height="80%">
+                                             height="80%"><br>
                                         {{ $items[$j]->price }}$
                                     </div>
                                 @endif
