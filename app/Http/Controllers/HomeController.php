@@ -52,7 +52,7 @@ class HomeController extends Controller
                 ->get();
         } else $items = Items::where('category_id', $request->category)
             ->orderBy($request->column, $request->filter)
-            ->get();;
+            ->get();
 
         return view('layouts.itemsload', [
             'items' => $items

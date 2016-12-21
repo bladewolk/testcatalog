@@ -33,7 +33,7 @@
         <div class="col-md-6 text-center">
             <div class="list-group-item">
                 Filter:
-                <input type="radio" name="filter" value="none" checked="checked">None
+                <input type="radio" name="filter" value="none" checked="checked" data-filter="" data-column="">None
                 <input type="radio" name="filter" value="Alphabetical" data-filter="asc" data-column="name">A-Z
                 <input type="radio" name="filter" value="Alphabetical" data-filter="desc" data-column="price">Price Up
                 to Down
