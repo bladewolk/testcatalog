@@ -47,13 +47,22 @@ class HomeController extends Controller
     public function loadSubcategory(Request $request)
     {
         if (sizeof($request->subcategory)) {
-            $items = Items::whereIn('subcategory_id', $request->subcategory)
-                ->orderBy($request->column, $request->filter)
-                ->get();
+            if ($request->filter == null) {
+                $items = Items::where('subcategory_id', $request->subcategory)->get();
+            } else {
+                $items = Items::whereIn('subcategory_id', $request->subcategory)
+                    ->orderBy($request->column, $request->filter)
+                    ->get();
+            }
         } else {
-            $items = Items::where('category_id', $request->category)
-                ->orderBy($request->column, $request->filter)
-                ->get();
+            if ($request->filter == null) {
+                $items = Items::where('category_id', $request->category)->get();
+            } else {
+                $items = Items::where('category_id', $request->category)
+                    ->orderBy($request->column, $request->filter)
+                    ->get();
+            }
+
         }
 
         return view('layouts.itemsload', [
