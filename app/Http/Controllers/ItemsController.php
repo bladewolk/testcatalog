@@ -8,6 +8,7 @@ use App\Items;
 use App\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\In;
 use Intervention\Image\Facades\Image;
 
@@ -46,13 +47,16 @@ class ItemsController extends Controller
     public function store(ItemsCreate $request)
     {
         if (Input::file()) {
-            $path = $request->file('image')->store('images');
-        } else $path = 'images/noimage.jpg';
+            $image = Input::file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/images/' . $filename);
+            Image::make($image->getRealPath())->resize(200, 200)->save($path);
+        } else $filename = 'noimage.jpg';
 
         $category_id = Subcategory::find($request->subcategory_id)->category()->get()->first()->id;
         $item = new Items($request->all());
         $item->category_id = $category_id;
-        $item->image = $path;
+        $item->image = '/images/' . $filename;
         $item->save();
         return redirect()->route('items.index');
     }
