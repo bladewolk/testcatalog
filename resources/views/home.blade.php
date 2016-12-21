@@ -46,15 +46,22 @@
             </div>
 
             <div id="loadContent">
-                @foreach($items as $item)
-                    <div class="col-md-3 text-center">
-                        {{ $item->name }} <br>
-                        {{--                        <img src="{{ asset('storage/'.$item->image)}}" width="80%"--}}
-                        <img src="{{ $item->image }}" width="80%"
-                             height="80%">
-                        {{ $item->price }}$
-                    </div>
-                @endforeach
+
+                @for ($i = 0; $i <= count($items)-1; $i+=3)
+                    <div style="float:left">
+                        @for ($j = $i; $j < $i+4; $j++)
+                            @if (isset($items[$j]))
+                                <div class="col-md-3 text-center">
+                                    {{ $items[$j]->name }} <br>
+                                    {{--                        <img src="{{ asset('storage/'.$item->image)}}" width="80%"--}}
+                                    <img src="{{ $items[$j]->image }}" width="80%"
+                                         height="80%">
+                                    {{ $items[$j]->price }}$
+                                </div>
+                            @endif
+                        @endfor
+                    </div><br>
+                @endfor
             </div>
         </div>
 

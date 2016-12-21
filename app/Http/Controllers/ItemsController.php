@@ -103,7 +103,6 @@ class ItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd(Input::all());
         $item = Items::find($id);
         $item->fill($request->all());
 
