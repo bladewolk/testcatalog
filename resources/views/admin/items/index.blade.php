@@ -9,12 +9,10 @@
                 <li class="list-group-item">
                     {{  $item->name }} <br>
                     {{ $item->price }}
-                    <div class="text-right">
-                        {{ link_to_route('items.show', $title = 'Show', $parameters = [$item->id], $attributes = ['class' => 'btn btn-primary']) }}
-                        <button class="btn btn-danger DelItem" data-id="{{ $item->id }}">Delete</button>
-                        {{ link_to_route('items.edit', $title = 'Edit', $parameters = [$item->id], $attributes = ['class' => 'btn btn-primary']) }}
-                        <img src="{{ asset('storage/'.$item->image)}}" widht="60" height="60">
-                    </div>
+                    {{ link_to_route('items.show', $title = 'Show', $parameters = [$item->id], $attributes = ['class' => 'btn btn-primary']) }}
+                    <button class="btn btn-danger DelItem" data-id="{{ $item->id }}">Delete</button>
+                    {{ link_to_route('items.edit', $title = 'Edit', $parameters = [$item->id], $attributes = ['class' => 'btn btn-primary']) }}
+                    <img src="{{ asset('storage/'.$item->image)}}" widht="60" height="60">
                 </li>
             @endforeach
         </ul>
@@ -38,7 +36,6 @@
             }).done(function () {
                 parent.remove();
             });
-
         });
     </script>
 @endsection
