@@ -50,7 +50,7 @@
       "touch database/database.sqlite",
       "php artisan migrate",
       "php artisan storage:link",
-      "chmod -R 775 app/storage/"
+      "chmod -R 775 storage"
     ],
     "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postUpdate",
