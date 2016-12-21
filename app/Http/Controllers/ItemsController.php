@@ -45,11 +45,12 @@ class ItemsController extends Controller
      */
     public function store(ItemsCreate $request)
     {
-        dd(Input::all());
-        $image = Input::file('image');
-        $filename = time() . '.' . $image->getClientOriginalExtension();
-        $path = public_path('/images/' . $filename);
-        Image::make($image->getRealPath())->resize(200, 200)->save($path);
+        if (Input::file()) {
+            $image = Input::file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/images/' . $filename);
+            Image::make($image->getRealPath())->resize(200, 200)->save($path);
+        } else $filename = 'noimage.jpg';
 
         $category_id = Subcategory::find($request->subcategory_id)->category()->get()->first()->id;
         $item = new Items($request->all());
