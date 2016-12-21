@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'cloud' => 'local',
+    'cloud' => 'public',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
         ],
 
         's3' => [
-            'driver' => 'local',
+            'driver' => 's3',
             'key' => 'your-key',
             'secret' => 'your-secret',
             'region' => 'your-region',
