@@ -18,15 +18,11 @@
                     </div>
                     <div id="collapse{{ $key }}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <ul style="list-style-type:none">
-                                @foreach($value->subcategories as $k => $subcategory)
-                                    <li>
-                                        <input type="checkbox" name="{{ $subcategory->id }}"
-                                               data-id="{{ $subcategory->id }}" data-category="{{ $value->id }}">
-                                        {{ $subcategory->name }}
-                                    </li>
-                                @endforeach
-                            </ul>
+                            @foreach($value->subcategories as $k => $subcategory)
+                                <input type="checkbox" name="{{ $subcategory->id }}"
+                                       data-id="{{ $subcategory->id }}" data-category="{{ $value->id }}">
+                                {{ $subcategory->name }}
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -95,27 +91,33 @@
                     $('#loadContent').html(response);
                 });
             });
-
+//Load subcategories
             $(":checkbox").click(function () {
+                filter = $(this).data("filter");
+                column = $(this).data("column");
                 var array = [];
-                id = $(this).attr("name");
+                id = $(this).data("id");
                 category = $(this).data("category");
-                console.log(category);
+
 
                 $("input:checkbox:checked").each(function () {
                     array.push($(this).data("id"));
                 });
 
+                console.log(array);
+
                 $.ajax({
                     type: 'POST',
                     url: '{{ route('ajaxLoadSubcategories') }}',
                     data: {
-                        id: array,
+                        subcategory: array,
                         category: category,
+                        column: column,
+                        filter: filter,
                         _token: CSRF_TOKEN
                     }
                 }).done(function (response) {
-//                console.log(response);
+//                    console.log(response);
                     $('#loadContent').html(response);
                 });
             });
