@@ -30,15 +30,20 @@ class ajaxController extends Controller
     public function ajaxImageDelete(Request $request)
     {
         $item = Items::find($request->id);
-        if ($item->image == '0383a250e987fe737edbf2518f208bc7.jpeg') {
-            return null;
-        } else {
-            $item->image = '0383a250e987fe737edbf2518f208bc7.jpeg';
-            $item->update();
-            return view('admin.items.imageDelete', [
-                'item' => $item
-            ]);
-        }
+        $item->image = 'http://www.novelupdates.com/img/noimagefound.jpg';
+        $item->update();
+//        if ($item->image == '0383a250e987fe737edbf2518f208bc7.jpeg') {
+//            return null;
+//        } else {
+//            $item->image = '0383a250e987fe737edbf2518f208bc7.jpeg';
+//            $item->update();
+//            return view('admin.items.imageDelete', [
+//                'item' => $item
+//            ]);
+//        }
+        return view('admin.items.imageDelete', [
+            'item' => $item
+        ]);
 
     }
 }

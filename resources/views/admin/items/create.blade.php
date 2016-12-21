@@ -14,7 +14,8 @@
                            autocomplete="off">
                 </li>
                 <li class="list-group-item">
-                    <input type="file" name="image">
+                    {{--<input type="file" name="image">--}}
+                    <input type="text" class="form-control" placeholder="link to image" name="image">
                 </li>
             </ul>
             <h4 class="text-center">Select category and subcategory</h4>

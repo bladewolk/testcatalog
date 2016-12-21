@@ -22,7 +22,9 @@
             </li>
             <li class="list-group-item">
                 Update picture:
-                <input type="file" name="image"> <br>
+                {{--<input type="file" name="image"> <br>--}}
+                <input type="text" class="form-control" placeholder="Link to image" name="image"
+                       value="{{ $item->image }}">
             </li>
         @include('layouts.errors')
 

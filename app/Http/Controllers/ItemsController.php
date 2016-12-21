@@ -46,16 +46,20 @@ class ItemsController extends Controller
      */
     public function store(ItemsCreate $request)
     {
-        if (Input::file()) {
-            $filename = $request->file('image')->store('public');
-            $path = substr($filename, 7);
+//        if (Input::file()) {
+//            $filename = $request->file('image')->store('public');
+//            $path = substr($filename, 7);
+//
+//        } else $path = '0383a250e987fe737edbf2518f208bc7.jpeg';
 
-        } else $path = '0383a250e987fe737edbf2518f208bc7.jpeg';
 
         $category_id = Subcategory::find($request->subcategory_id)->category()->get()->first()->id;
         $item = new Items($request->all());
         $item->category_id = $category_id;
-        $item->image = $path;
+        if (empty($request->image)) {
+            $item->image = "http://www.novelupdates.com/img/noimagefound.jpg";
+        }
+//        $item->image = $path;
         $item->save();
         return redirect()->route('items.index');
     }
@@ -99,14 +103,15 @@ class ItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd(Input::all());
         $item = Items::find($id);
         $item->fill($request->all());
 
-        if (Input::file()) {
-            $filename = $request->file('image')->store('public');
-            $path = substr($filename, 7);
-            $item->image = $path;
-        }
+//        if (Input::file()) {
+//            $filename = $request->file('image')->store('public');
+//            $path = substr($filename, 7);
+//            $item->image = $path;
+//        }
 
         $item->update();
         return redirect()->route('items.index');
