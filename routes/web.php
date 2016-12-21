@@ -20,7 +20,7 @@ Route::post('/loadCategory', 'HomeController@loadCategory');
 Route::post('/loadSubcategory', 'HomeController@loadSubcategory')->name('ajaxLoadSubcategories');
 Route::post('/ajaxFilter', 'HomeController@ajaxFilter')->name('ajaxFilter');
 
-Route::post('/categories/delete', 'ajaxController@deleteCategory')->name('ajaxDelete');
+Route::post('/categories/delete', 'ajaxController@deleteCategory')->name('ajaxCategoryDelete');
 Route::post('/items/delete', 'ajaxController@deleteItem')->name('ajaxDeleteItem');
 Route::post('/categories/load', 'ajaxController@loadSubcategory')->name('subcategoryLoad');
 Route::post('items', 'ajaxController@ajaxImageDelete')->name('ajaxImageDelete');

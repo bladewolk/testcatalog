@@ -23,12 +23,12 @@
     <script>
         $(".DelCat").click(function () {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            parent = $(this).parent(".list-group-item");
+            parent = $(this).parent().parent();
             id = $(this).data("id");
 
             $.ajax({
                 type: 'POST',
-                url: '{{ route('ajaxDelete') }}',
+                url: '{{ route('ajaxCategoryDelete') }}',
                 data: {
                     id: id,
                     _token: CSRF_TOKEN
